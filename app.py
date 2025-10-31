@@ -223,7 +223,7 @@ def index():
     """Sirve el archivo index.html principal."""
     return send_from_directory(app.template_folder, 'index.html')
 
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all() # Asegura que la DB exista al iniciar
-    app.run(debug=True)
+#if __name__ == '__main__':
+#    with app.app_context():
+#        db.create_all() # Asegura que la DB exista al iniciar
+#    app.run(debug=True)
