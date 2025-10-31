@@ -11,6 +11,20 @@ app = Flask(__name__, static_folder='static', template_folder='templates')
 CORS(app)  # Habilita CORS para toda la aplicación
 
 # --- CONFIGURACIÓN DE LA BASE DE DATOS ---
+
+# La configuración ahora se lee desde variables de entorno
+db_user = os.getenv('DB_USER', 'dinerouser')
+db_pass = os.getenv('DB_PASS', 'S0portefcbv@1')
+db_host = os.getenv('DB_HOST', 'localhost')
+db_name = os.getenv('DB_NAME', 'mi_control_dinero_db')
+
+# Cadena de conexión para MySQL en producción
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{db_user}:{db_pass}@{db_host}/{db_name}'
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db.init_app(app)
+
 # Usa una carpeta 'instance' para la base de datos SQLite
 instance_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance')
 os.makedirs(instance_path, exist_ok=True)
