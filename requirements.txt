@@ -2,3 +2,6 @@ Flask>=2.0
 Flask-SQLAlchemy>=2.5
 Flask-Cors>=3.0
 SQLAlchemy>=1.4
+gunicorn
+pymysql
+```    Asegúrate de subir este cambio a tu repositorio y hacer `git pull` en el servidor.
